@@ -5,7 +5,7 @@ import math
 
 # 画像入出力先パス、拡張子
 # EXTには処理対象とする画像ファイルの拡張子を指定
-INP = "/home/xxxx/YoloTrainDataGenerate/images/"
+INP = "./images/"
 EXT = ".png"
 
 # 背景全面白色塗りつぶし
