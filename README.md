@@ -1,6 +1,6 @@
 # [Japanese] YoloTrainDataGenerate
-YoloV2独自学習データの生成＋Movidius Neural Compute Stick向け学習データコンバート<br>
-YoloV2 Generate original learning data + Learning data conversion for Movidius Neural Compute Stick<br>
+YoloV2独自学習データを半機械的に自動生成するツール<br>
+YoloV2 Generate original learning data<br>
 https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 
 　
@@ -13,7 +13,9 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 * cuDNN v6.0
 * Caffe
 * OpenCV 3.4.0
+* ffmpeg
 * Samba
+* pyrenamer
 
 　
 # おおまかな流れ
@@ -24,12 +26,11 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 
 　
 # 動画→静止画変換
-
+下記コマンドにより動画から生成したpngファイルを「YoloTrainDataGenerate/images_org/」へコピー<br>
 `$ ffmpeg -i xxxx.mp4 -vcodec png -r 10 image_%04d.png`
 
 　
-# 指定フォルダ内の複数静止画ファイル、複数物体周囲をまとめて機械的に透過加工
-
+# 複数静止画ファイル、複数物体周囲を機械的に一括透過加工
 * 背景が白色に近い色・物体が白色／灰色以外の配色で構成されている場合のみ動作
 * １画像内に複数物体が写っている場合は物体数分の画像ファイルへ分割して加工
 * 入力画像が長方形であっても最終生成画像は物体を含む96×96の正方形
@@ -51,8 +52,8 @@ $ python3 object_extraction.py
 <br>
 
 # 画像の前処理
-images_org配下のファイル名をpyrenamer等を利用して「(ラベル名)_xxxx.png」に一括変更
-* xxxx の箇所は同一ラベル名で重複しないように連番なり、文字列なり、自由に設定(４桁でなくても良い)
+images_org配下のファイル名をpyrenamer等を利用して 「(ラベル名)_xxxx.png」 に一括変更
+* xxxx の箇所は同一ラベル名で重複しないように連番なり、文字列なり、自由に設定 (４桁でなくても良い)
 
 ```（例）.
 　labelA_0001.png　→　「labelA」に集約
@@ -75,7 +76,7 @@ images_org配下のファイル名をpyrenamer等を利用して「(ラベル名
 ```
 <br>
 
-# 学習用画像データ他の自動生成
+# Yolo学習用画像データ他の自動生成
 
 * 静止画からランダムに回転・縮小・拡大・配置・ノイズ追加を繰り返して水増し画像生成
 * 任意の物体画像と任意の背景画像を自由に合成
