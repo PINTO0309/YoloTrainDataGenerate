@@ -5,8 +5,8 @@ YoloV2 Generate original learning data + Learning data conversion for Movidius N
 
 　
 ## 環境
-(1)【学習用PC】 GIGABYE U2442F
-  * MEM：16GB
+* 【学習用PC】 GIGABYE U2442F
+  * MEM：16GB
   * CPU：第3世代 Intel Core i7-3517U(1.9GHz)
   * GPU：Geforce GT 650M (VRAM:2GB)
   * OS：Ubuntu 16.04 LTS (Windows10とのデュアルブート)
@@ -16,8 +16,7 @@ YoloV2 Generate original learning data + Learning data conversion for Movidius N
   * OpenCV 3.4.0
   * Samba
 
-(2)【実行環境】 Raspberry Pi 3 ModelB
-
+* 【実行環境】 Raspberry Pi 3 ModelB
   * Raspbian Stretch
   * NCSDK v1.12.00
   * Intel Movidius Neural Compute Stick
