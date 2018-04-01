@@ -5,11 +5,11 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 
 　
 # 環境
-* 【学習用PC】 GIGABYE U2442F
+* 【学習用PC】
   * MEM：16GB
   * CPU：第3世代 Intel Core i7-3517U(1.9GHz)
   * GPU：Geforce GT 650M (VRAM:2GB)
-  * OS：Ubuntu 16.04 LTS (Windows10とのデュアルブート)
+  * OS：Ubuntu 16.04 LTS
   * CUDA 8.0.61
   * cuDNN v6.0
   * Caffe
