@@ -58,6 +58,6 @@ $ python3 ObjectExtraction.py
 (3) 物体検出<br>
 &nbsp;&nbsp;&nbsp;&nbsp;![3.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/3.png)<br>
 (4) 背景透過処理後PNGファイル２枚 96x96<br>
-&nbsp;&nbsp;&nbsp;&nbsp;![4.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/4.png)![5.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/5.png)![6.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/6.png)
+&nbsp;&nbsp;&nbsp;&nbsp;![4.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/4.png)&nbsp;&nbsp;&nbsp;&nbsp;![5.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/5.png)![6.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/6.png)
 
 
