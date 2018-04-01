@@ -122,7 +122,7 @@ def addSaltPepperNoise(src):
 
 
 base_path = os.getcwd()
-fruit_files = glob.glob("orig_images/*")
+fruit_files = glob.glob("images_org/*")
 fruits = []
 labels = []
 labelsdist = []
