@@ -88,5 +88,8 @@ images_org配下のファイル名をpyrenamer等を利用して 「(ラベル�
 
 下記コマンドを実行
 ```
+$ cd YoloTrainDataGenerate
+$ sudo chmod +x *.sh
+$ ./setup.sh
 $ python3 generate_sample.py
 ```
