@@ -5,23 +5,15 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 
 　
 # 環境
-* 【学習用PC】
-  * MEM：16GB
-  * CPU：第3世代 Intel Core i7-3517U(1.9GHz)
-  * GPU：Geforce GT 650M (VRAM:2GB)
-  * OS：Ubuntu 16.04 LTS
-  * CUDA 8.0.61
-  * cuDNN v6.0
-  * Caffe
-  * OpenCV 3.4.0
-  * Samba
-
-* 【実行環境】 Raspberry Pi 3 ModelB
-  * Raspbian Stretch
-  * NCSDK v1.12.00
-  * Intel Movidius Neural Compute Stick
-  * OpenCV 3.4.0
-  * Samba
+* MEM：16GB
+* CPU：第3世代 Intel Core i7-3517U(1.9GHz)
+* GPU：Geforce GT 650M (VRAM:2GB)
+* OS：Ubuntu 16.04 LTS
+* CUDA 8.0.61
+* cuDNN v6.0
+* Caffe
+* OpenCV 3.4.0
+* Samba
 
 　
 # おおまかな流れ
@@ -29,17 +21,14 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 2. 動画から機械的に静止画を大量生成
 3. 大量の静止画から物体部分を機械的に抽出して背景が透過した物体画像生成
 4. 別途用意した背景静止画と 3. で生成した物体静止画をランダムに回転・縮小・拡大・配置・ノイズ追加しながら合成して大量に水増し
-5. 学習
-6. Intel Movidius Neural Compute Stick 用学習データ(graph)へ変換
-7. Raspberry Pi上で 6. を使用してtinyYoloによる複数動体検知
 
 　
-# 【学習用PC】 動画→静止画変換
+# 動画→静止画変換
 
 `$ ffmpeg -i xxxx.mp4 -vcodec png -r 10 image_%04d.png`
 
 　
-# 【学習用PC】 指定フォルダ内の複数静止画ファイル、複数物体周囲をまとめて機械的に透過加工
+# 指定フォルダ内の複数静止画ファイル、複数物体周囲をまとめて機械的に透過加工
 
 * 背景が白色に近い色・物体が白色／灰色以外の配色で構成されている場合のみ動作
 * １画像内に複数物体が写っている場合は物体数分の画像ファイルへ分割して加工
@@ -59,9 +48,44 @@ $ python3 object_extraction.py
 &nbsp;&nbsp;&nbsp;&nbsp;![3.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/3.png)<br>
 (4) 背景透過処理後PNGファイル２枚 96x96<br>
 &nbsp;&nbsp;&nbsp;&nbsp;![4.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/4.png)&nbsp;&nbsp;&nbsp;&nbsp;![5.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/5.png)![6.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/6.png)
+<br>
 
-# 【学習用PC】 学習用画像データ他の作成
+# 画像の前処理
+images_org配下のファイル名をpyrenamer等を利用して「(ラベル名)_xxxx.png」に一括変更
+* xxxx の箇所は同一ラベル名で重複しないように連番なり、文字列なり、自由に設定(４桁でなくても良い)
+
+```（例）.
+　labelA_0001.png　→　「labelA」に集約
+　labelA_0002.png　→　「labelA」に集約
+　labelA_0003.png　→　「labelA」に集約
+　labelB_0001.png　→　「labelB」に集約
+　labelB_0002.png　→　「labelB」に集約
+　labelC_0001.png　→　「labelC」に集約
+　　　：
+```
+
+```（例）.ラベルがswitchとremoconの場合
+　switch_0001.png　→　「switch」に集約
+　switch_0002.png　→　「switch」に集約
+　switch_0003.png　→　「switch」に集約
+　switch_0004.png　→　「switch」に集約
+　remocon_0001.png　→　「remocon」に集約
+　remocon_0002.png　→　「remocon」に集約
+　　　：
+```
+<br>
+
+# 学習用画像データ他の自動生成
 
 * 静止画からランダムに回転・縮小・拡大・配置・ノイズ追加を繰り返して水増し画像生成
 * 任意の物体画像と任意の背景画像を自由に合成
 * 前処理で生成した連番付き画像ファイル名の連番部を無視し、複数画像をひとつのラベルへ集約
+* train.txt、test.txt、label.txt が生成される
+* images配下に水増し済みの静止画像が生成される
+* デフォルトの水増し枚数は10,000枚、変更する場合は generate_sample.py の 「train_images = 10000」 を修正する
+
+
+下記コマンドを実行
+```
+$ python3 generate_sample.py
+```
