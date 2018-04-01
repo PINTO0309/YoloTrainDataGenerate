@@ -47,7 +47,10 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 * エッジ抽出の都合上、重なり合っている物体は１つと認識される
 * 検出された物体の面積が1000pxに満たない場合は当該物体を抽出対象から除外
 * 最終生成された画像内に物体が存在しないと判断される場合はファイルを生成しない
-
+```
+$ cd YoloTrainDataGenerate
+$ python3 ObjectExtraction.py
+```
 (1) 編集元画像 1920x1080<br>
 &nbsp;&nbsp;&nbsp;&nbsp;![1.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/1.png)<br>
 (2) 元画像の背景白色化<br>
