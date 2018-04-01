@@ -60,4 +60,8 @@ $ python3 ObjectExtraction.py
 (4) 背景透過処理後PNGファイル２枚 96x96<br>
 &nbsp;&nbsp;&nbsp;&nbsp;![4.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/4.png)&nbsp;&nbsp;&nbsp;&nbsp;![5.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/5.png)![6.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/6.png)
 
+# 【学習用PC】 学習用画像データ他の作成
 
+* 静止画からランダムに回転・縮小・拡大・配置・ノイズ追加を繰り返して水増し画像生成
+* 任意の物体画像と任意の背景画像を自由に合成
+* 前処理で生成した連番付き画像ファイル名の連番部を無視し、複数画像をひとつのラベルへ集約
