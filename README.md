@@ -3,6 +3,7 @@ YoloV2独自学習データの生成＋Movidius Neural Compute Stick向け学習
 
 YoloV2 Generate original learning data + Learning data conversion for Movidius Neural Compute Stick
 
+　
 ## 環境
 (1)【学習用PC】 GIGABYE U2442F
 
@@ -36,6 +37,7 @@ YoloV2 Generate original learning data + Learning data conversion for Movidius N
 
   ・Samba
 
+　
 ## 流れ
   1. 適当に動画撮影
   2. 動画から機械的に静止画を大量生成
@@ -44,5 +46,14 @@ YoloV2 Generate original learning data + Learning data conversion for Movidius N
   5. 学習
   6. Intel Movidius Neural Compute Stick 用学習データ(graph)へ変換
   7. Raspberry Pi上で 6. を使用してtinyYoloによる複数動体検知
+
+ 
+## 【学習用PC】 動画→静止画変換
+
+`$ ffmpeg -i xxxx.mp4 -vcodec png -r 10 image_%04d.png`
+
+## 【学習用PC】 指定フォルダ内の複数静止画ファイル、複数物体周囲をまとめて機械的に透過加工
+
+
 
 
