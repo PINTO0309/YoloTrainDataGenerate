@@ -99,6 +99,7 @@ $ python3 generate_sample.py
 ```
 <br>
 <br>
+<hr>
 
 # [English] YoloTrainDataGenerate
 Procedures and tools for semi-mechanically automatically generating YoloV2 original learning data from video<br>
