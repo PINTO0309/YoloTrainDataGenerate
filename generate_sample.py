@@ -122,13 +122,13 @@ def addSaltPepperNoise(src):
 
 
 base_path = os.getcwd()
-fruit_files = glob.glob("images_org/*")
-fruits = []
+img_files = glob.glob("images_org/*")
+imgs = []
 labels = []
 labelsdist = []
-for fruit_file in fruit_files:
-    labels.append(fruit_file.split("/")[-1].split(".")[0].split("_")[0])
-    fruits.append(cv2.imread(fruit_file, cv2.IMREAD_UNCHANGED))
+for img_file in img_files:
+    labels.append(img_file.split("/")[-1].split(".")[0].split("_")[0])
+    imgs.append(cv2.imread(img_file, cv2.IMREAD_UNCHANGED))
 background_image = cv2.imread("background.jpg")
 labelsdist = remove_duplicates(labels)
 
@@ -175,10 +175,10 @@ for i in range(train_images):
     sampled_background = random_sampling(background_image, background_height, background_width)
 
     class_id = np.random.randint(len(labels))
-    fruit = fruits[class_id]
-    fruit = random_rotate_scale_image(fruit)
+    img = imgs[class_id]
+    img = random_rotate_scale_image(img)
 
-    result, bbox = random_overlay_image(sampled_background, fruit)
+    result, bbox = random_overlay_image(sampled_background, img)
     yolo_bbox = yolo_format_bbox(result, bbox)
 
     # コントラスト変換実行
@@ -222,10 +222,10 @@ for i in range(test_images):
     sampled_background = random_sampling(background_image, background_height, background_width)
 
     class_id = np.random.randint(len(labels))
-    fruit = fruits[class_id]
-    fruit = random_rotate_scale_image(fruit)
+    img = imgs[class_id]
+    img = random_rotate_scale_image(img)
 
-    result, bbox = random_overlay_image(sampled_background, fruit)
+    result, bbox = random_overlay_image(sampled_background, img)
     yolo_bbox = yolo_format_bbox(result, bbox)
 
     # コントラスト変換実行
