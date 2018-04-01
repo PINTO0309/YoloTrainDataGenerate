@@ -49,7 +49,7 @@ https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 * 最終生成された画像内に物体が存在しないと判断される場合はファイルを生成しない
 ```
 $ cd YoloTrainDataGenerate
-$ python3 ObjectExtraction.py
+$ python3 object_extraction.py
 ```
 (1) 編集元画像 1920x1080<br>
 &nbsp;&nbsp;&nbsp;&nbsp;![1.png](https://github.com/PINTO0309/YoloTrainDataGenerate/blob/master/media/1.png)<br>
