@@ -1,5 +1,5 @@
 # [Japanese] YoloTrainDataGenerate
-YoloV2独自学習データを半機械的に自動生成するツール<br>
+動画からYoloV2独自学習データを半機械的に自動生成するための手順とツール<br>
 YoloV2 Generate original learning data<br>
 https://qiita.com/PINTO/items/d5645734ca9c95b1c395
 
